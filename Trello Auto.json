@@ -1,0 +1,775 @@
+{
+	"info": {
+		"_postman_id": "c48f46e0-9a38-4473-9815-af47c0fb47ae",
+		"name": "Trello Auto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26726135"
+	},
+	"item": [
+		{
+			"name": "Create a new Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var key = \"bId\"",
+							"var value = pm.response.json().id // ID Доски",
+							"pm.collectionVariables.set(key, value)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"{{tokenT}}\",\n    \"name\": \"Cread Board For Postman {{$randomInt}}\",\n    \"defaultLists\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/1/boards",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"boards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read  a Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/1/boards/{{bId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{bId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var key = \"lId\"",
+							"var value = pm.response.json().id // ID Листа",
+							"pm.collectionVariables.set(key, value)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"{{tokenT}}\",\n        \"id\": \"64573e69455c5eb084c0a724\",\n        \"name\": \"Список через Postman 1\",\n        \"closed\": false,\n        \"idBoard\": \"{{bId}}\",\n        \"pos\": 114688,\n        \"status\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/1/lists",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new List 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var key = \"lId2\"",
+							"var value = pm.response.json().id // ID Листа 2",
+							"pm.collectionVariables.set(key, value)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"{{tokenT}}\",\n        \"id\": \"64573e69455c5eb084c0a724\",\n        \"name\": \"Список через Postman 2\",\n        \"closed\": false,\n        \"idBoard\": \"{{bId}}\",\n        \"pos\": 114688,\n        \"status\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/1/lists",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read a List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/1/lists/{{lId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{lId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new Card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var key = \"cId\"",
+							"var value = pm.response.json().id // ID Карточки",
+							"pm.collectionVariables.set(key, value)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "key",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "type",
+							"value": "string",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$randomCity}}\",\n    \"closed\": false,\n    \"idBoard\": \"{{bId}}\",\n    \"idList\": \"{{lId}}\",\n    \"token\": \"{{tokenT}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/1/cards",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"cards"
+					]
+				},
+				"description": "Create a new card"
+			},
+			"response": []
+		},
+		{
+			"name": "Read  a Card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/1/cards/{{cId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{cId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Card Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "key",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "type",
+							"value": "string",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Изменил Postman\",\n    \"closed\": false,\n    \"idBoard\": \"{{bId}}\",\n    \"idList\": \"{{lId}}\",\n    \"token\": \"{{tokenT}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/1/cards/{{cId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{cId}}"
+					]
+				},
+				"description": "Create a new card"
+			},
+			"response": []
+		},
+		{
+			"name": "Read  a Card Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/1/cards/{{cId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{cId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Card to list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "key",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "type",
+							"value": "string",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Изменил Postman\",\n    \"closed\": false,\n    \"idBoard\": \"{{bId}}\",\n    \"idList\": \"{{lId2}}\",\n    \"token\": \"{{tokenT}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/1/cards/{{cId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{cId}}"
+					]
+				},
+				"description": "Create a new card"
+			},
+			"response": []
+		},
+		{
+			"name": "Read  a Card Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/1/cards/{{cId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{cId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new comment to a Card Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var key = \"cmmId\"",
+							"var value = pm.response.json().id // ID Коментария",
+							"pm.collectionVariables.set(key, value)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "key",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "type",
+							"value": "string",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"Коментарий\",\n    \"token\": \"{{tokenT}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/1/cards/{{cId}}/actions/comments",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{cId}}",
+						"actions",
+						"comments"
+					]
+				},
+				"description": "Add a new comment to a card"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\" : \"{{tokenT}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/1/cards/{{cId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{cId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token={{tokenT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\" : \"{{tokenT}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/1/boards/{{bId}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{bId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://trello.com"
+		},
+		{
+			"key": "tokenT",
+			"value": "643262d26f1ace05463096e7/ATTSU7pZiPEnMZaxU6iN1un53Dvah453VeafrGNwXAqV0zGZ0VzMQezD86hWG5qQFI0W4BE3E1F1"
+		},
+		{
+			"key": "bId",
+			"value": ""
+		},
+		{
+			"key": "lId",
+			"value": ""
+		},
+		{
+			"key": "cId",
+			"value": ""
+		},
+		{
+			"key": "lId2",
+			"value": ""
+		},
+		{
+			"key": "text",
+			"value": "The comment"
+		},
+		{
+			"key": "cmmId",
+			"value": ""
+		}
+	]
+}
