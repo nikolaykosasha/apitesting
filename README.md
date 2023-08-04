@@ -2,6 +2,8 @@
 
 Этот репозиторий содержит созданную мной коллекцию и переменные Postman, атак же SOAP UI
 
+![SOAP/REST](https://github.com/nikolaykosasha/apitesting/blob/main/.idea/SOAP%3AREST.jpeg)
+
 Коллекция Postman : Trello Auto
 
 **Задание:** Создать новую коллекцию, наполнить ее методами GET, POST, PUT, DELET.
